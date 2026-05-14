@@ -1,0 +1,15 @@
+The Heapsort algorithm is an efficient comparison based sorting algorithm that uses a binary heap data structure to sort elements in an array. It means that heap must be a complete binary tree or almost. 
+A complete binary tree is a binary tree in which all the leaf nodes lie on the same level. Or It is a  binary tree which has two offsprings: left node and right node connected to a root node.
+In heap sort, the main concept is to make a almost or a completete binary tree. To make a complete binary tree, nodes are added to the tree level by level and a new level is only started after the current one is entirely filled. Here, nodes are added to tree from leftmost side and then rightmost side level-by-level
+  Heapify means arranging element to satisfy the heap property or 
+
+ Working of Heap Sort:
+Heap Sort operates in two main stages based on max-heap: 
+1. Build a Max Heap (Heap Construction):
+  Start with an unsorted array. Then, input array is converted into max heap which is a complete binary tree where every parent node has a value >= its children's values. This makes the largest is always at the root (index of the array). However, if heap property is not maintained at respective step, we applied the heapify procedure to that step. Thus, at each step heapfification is done to make valid max heap. 
+2. Sort the elements (Extraction of elements):
+Once the max heap is built, the array is sorted by repeatedly extracting the maximum element from the heap: 
+1. Swap the root element (the largest element) with the last element in the unsorted portion of the array. 
+2. Then, Effective size of heap is reduced by one when last element is placed on the right position. 
+3. Heapfiying is done wether the heap property is maintained or not.
+4. Repeat these steps until the heap size is reduce to one element at which is entire array is sorted. 

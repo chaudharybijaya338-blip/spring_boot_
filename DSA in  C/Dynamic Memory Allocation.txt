@@ -1,0 +1,36 @@
+Dynamic Memory Allocation:
+Dynamic Memory Allocation: The process of allocating or deallocating new memory space during the run time(i.e. execution time) of a C program is called DMA. During runtime, we allocate or create new memory space dynamically in a C program. However. it is mandatory to free or deallocate the memory once it is no longer in use. this approach allows programmers to reserve memory during the program's execution, use it as needed and then release it so the memory can be reused. Dynamically allocated memory resides in the heap, not in the stack. Here, the simple concept of allocating  or deallocating a memory space in heap at runtime in heap memory called DMA. 
+ Using a four set of standard library functions defined in the <stdlib.h> header file for the dynamic memory management. This primarily used in linked lists, array and trees. 
+Memory for dynamic allocation is taken from the heap memory area as opposed to static memory allocation, which uses the stack. 
+Function for the Dynamic Memory Management:
+The primary functions used for DMA are malloc(), calloc(), realloc() and free().
+These function must be defined in the header file as:
+#include<stdlib.h>
+
+
+1. malloc() function: It stands for memory allocation. This function is used to allocates a single large block of memory space dynamically with specified size in bytes on the heap i.e. all at once during runtime. When the memory space is allocated using malloc(), values are not initialized by user explicitly but by default, it is initialized by garbage values. It returns a pointer of "void" type which can be type casted to pointer of any other form. If the memory space if required bytes is unavailable, it will return a Null pointer. 
+Assume that we want to create an array to store 5 integers. Since the size of int is 4 bytes, we need 5 * 4 bytes = 20 bytes of memory
+Syntax:
+data_type* ptr_name;
+ptr_name=(cast_data_type*)malloc(size_in_bytes);
+It is read as memory space is allocating of specific data type using malloc consisting total size in bytes and after memory allocation, starting address will be pointed by the pointer. 
+Using sizeof() operator/function: 
+sizeof(): It returns the size of data type/ identifier in terms of bytes. 
+ptr_name=(cast_data_type*)malloc(n*sizeof(data_type));
+Here, we do n*sizeof(data_type) then we get total size in bytes to creates bunch of memory space all at once. 
+ 
+2. calloc() function: It stands for continguous allocation. It is similar to malloc(). This function is used to allocate block of memory individually of specified size. After memory allocation, each block of memory initailzied to zero by default. 
+Syntax:
+data_type* ptr_name;
+ptr_name=(cast_data_type*)calloc(number_of_data_items,size_of_each_data_items);
+3. realloc():This function is used to resize previously allocated memory space using malloc() or calloc(). It extends or deteroiates the size of an exisiting allocated memory space while keeping existing data items safe. Then, old data items are copied to new memory block. 
+Syntax:
+data_type* ptr_name;
+ptr_name=(cast_data_type*)malloc(old_ptr_name,new_size_in_bytes);
+Here, old_ptr_name defines the pointer to the previously allocated memory space 
+new_size_in_bytes: The new size of memory space required. 
+4. free() function: This function is used to release or free or deallocates dynamically allocated memory that was previoused using the malloc(), calloc() or realloc() to avoid memory leaks. The memory space is allocated by  malloc(), calloc() or realloc() are not deallocated automatically. Thereby, results in wastage of storage which means stays occupied even after its no longer needed. this ultimately cause memory especially in running or memory-intensive programs. 
+To reuse the memory space, we must deallocate it.
+Syntax: 
+free(ptr_name);
+ptr_name is a pointer to the memory block that was prievously allocated using malloc calloc realloc. 

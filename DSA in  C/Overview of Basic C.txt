@@ -1,0 +1,716 @@
+Function in C:
+A function is a self-contained block of statements that performs some specific tasks.
+Aspects of function:
+Function Prototype/ Declaration:
+Syntax:
+return_data_type func_name(list_of_data_type_of_args);
+If the arguments are not used:
+return_data_type func_name(list_of_data_type);
+
+Function Body/Definiton:
+return_data_type func_name(list_of_data_type_of_args){
+statements;
+return_statements;
+}
+
+Function Call Statement:
+func_name(list_of_args);
+If any value return to the caller:
+data_type var_name=func_name(list_of_args);
+Example:
+#include<stdio.h>
+int addTwo(int,int);
+//int addTwo(int x,int y);
+int main(){
+const int a=20,b=78;
+int res=addTwo(a,b);
+printf("Sum=%d",res);
+return 0;
+}
+int addTwo(int x,int y){
+int c=x+y;
+return c;
+}
+
+
+Array in C
+Array is the collection of data items of same data type that are stored in continguous memory location.
+ Types of Array:
+For 1-D Array:
+Syntax:
+data_type arr_name[size];
+Example:
+#include<stdio.h>
+#define N 5
+int main(){
+int arr[N];
+printf("Enter the array elements:");
+for(int i=0;i<N;i++){
+scanf("%d",&arr[i]);
+}
+printf("Displaying the array elements:");
+for(int i=0;i<N;i++){
+printf("arr[%d]=%d",i,arr[i]);
+}
+return 0;
+}
+For 2-D Array:
+Syntax:
+data_type arr_name[row_size][column_size];
+Example:
+#include<stdio.h>
+#define M 2
+#define N 3
+int main(){
+int arr[M][N];
+printf("Enter the array elements:");
+for(int i=0;i<M;i++){
+for(int j=0;j<N;j++){
+scanf("%d",&arr[i][j]);
+}
+}
+printf("Displaying the array elements:");
+for(int i=0;i<M;i++){
+for(int j=0;j<N;j++){
+printf("arr[%d][%d]=",i,j,arr[i][j]);
+}
+return 0;
+}
+
+Passing Array as an Function Argument:
+For 1-D array:
+Example:
+#include <stdio.h>
+#define N 5
+
+void Arr_Func(int a[]);  // function prototype
+//void Arr_Func(int []);
+int main() {
+    int arr[N];
+    printf("Enter the array elements:\n");
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    Arr_Func(arr);  // pass array to function
+    return 0;
+}
+
+void Arr_Func(int a[]) {
+    printf("Displaying the array elements:\n");
+    for (int i = 0; i < N; i++) {
+        printf("a[%d]=%d\n", i, a[i]);
+    }
+}
+
+For 2-D Array:
+Example:
+#include <stdio.h>
+#define M 2
+#define N 3
+
+void Add_Two(int A[][N], int B[][N]);  // function prototype
+//void Add_Two(int [][N], int [][N]); 
+int main() {
+    int X[M][N], Y[M][N];
+
+    printf("Enter the array elements in first matrix:\n");
+    for (int i = 0; i < M; i++) {
+        for (int j = 0; j < N; j++) {
+            scanf("%d", &X[i][j]);
+        }
+    }
+
+    printf("Enter the array elements in second matrix:\n");
+    for (int i = 0; i < M; i++) {
+        for (int j = 0; j < N; j++) {
+            scanf("%d", &Y[i][j]);
+        }
+    }
+
+    Add_Two(X, Y);  // call function
+
+    return 0;
+}
+
+void Add_Two(int A[][N], int B[][N]) {
+    int Z[M][N];
+
+    // Add the two matrices
+    for (int i = 0; i < M; i++) { 
+        for (int j = 0; j < N; j++) {
+            Z[i][j] = A[i][j] + B[i][j];
+        }
+    }
+
+    // Print the resultant matrix
+    printf("Resultant matrix elements:\n");
+    for (int i = 0; i < M; i++) { 
+        for (int j = 0; j < N; j++) {
+            printf("Z[%d][%d] = %d\n", i, j, Z[i][j]);
+        }
+    }
+}
+
+Structure:
+Structure is the collection of data items of different data type into a single unit.
+Syntax:
+Type-1:
+struct struct_name{
+data_type member_name1;
+data_type memeber_name2;
+-----------------------
+data_type member_nameN;
+};
+int main(){
+struct stuct_name struct_var_name;
+--------
+return 0;
+}
+ Example:
+Type-1:
+#include<stdio.h>
+struct Employee{
+char name[20];
+int age;
+float salary;
+}s;
+int main(){
+s.name="Vijay";
+s.age=21;
+s.salary=2024.77;
+printf("Displaying Employee Details:\n");
+printf("Employee's name=%s, age=%d, salary=%f", s.name,s.age,s.salary);
+return 0;
+}
+
+Type-2:
+struct stuct_name{
+data_type member_name1;
+data_type memeber_name2;
+-----------------------
+data_type member_nameN;
+}struct_var_name;
+
+Type-2:
+#include<stdio.h>
+struct Employee{
+char name[20];
+int age;
+float salary;
+};
+int main(){
+/*
+struct Employee s;
+s.name="Vijay";
+s.age=21;
+s.salary=2024.77;
+*/
+struct Employee s={"Vijay",21,2024.77};
+printf("Displaying Employee Details:\n");
+printf("Employee's name=%s, age=%d, salary=%f", s.name,s.age,s.salary);
+return 0;
+}
+
+Accessing Data Member of Structure:
+Syntax:
+struct_var_name.member_name;
+If initialization is done:
+struct_var_name.member_name=value;
+
+
+Array of Structure:
+Syntax:
+Type-1:
+struct stuct_name{
+data_type member_name1;
+data_type memeber_name2;
+-----------------------
+data_type member_nameN;
+}arr_name[size];
+Example: 
+
+Type-1:
+#include<stdio.h>
+struct Employee{
+char name[20];
+int age;
+float salary;
+}s[5];
+int main(){
+printf("Enter the details of Employee:");
+for(int i=0;i<5;i++){
+scanf("%s %d %f", s[i].name,&s[i].age,&s[i].salary);
+}
+printf("Displaying Employee Details:\n");
+for(int i=0;i<45;i++){
+scanf("s[i] Employee name=%s, age=%d, salary=%f", s[i].name,s[i].age,s[i].salary);
+return 0;
+}
+Type-2:
+struct struct_name{
+data_type member_name1;
+data_type memeber_name2;
+-----------------------
+data_type member_nameN;
+};
+int main(){
+struct stuct_name arr_name[size];
+--------
+return 0;
+}
+Example:
+#include<stdio.h>
+struct Employee{
+char name[20];
+int age;
+float salary;
+};
+int main(){
+struct Employee s[5];
+printf("Enter the details of Employee:");
+for(int i=0;i<5;i++){
+scanf("%s %d %f", s[i].name,&s[i].age,&s[i].salary);
+}
+printf("Displaying Employee Details:\n");
+for(int i=0;i<45;i++){
+scanf("s[i] Employee name=%s, age=%d, salary=%f", s[i].name,s[i].age,s[i].salary);
+return 0;
+}
+ Nesting of Structure:
+Type-1:
+When one structure is placed inside the another structure, then such structure is called nested structure.
+Syntax:
+Type-11:
+struct struct_name1 {
+    data_type member_name1;
+    data_type member_name2;
+    -----------------------
+    data_type member_nameM;
+
+    struct struct_name2 {
+        data_type member_name1;
+        data_type member_name2;
+        -----------------------
+        data_type member_nameN;
+    } struct_var2;
+} struct_var1;
+
+Type-21:
+struct struct_name1 {
+    data_type member_name1;
+    data_type member_name2;
+    -----------------------
+    data_type member_nameM;
+
+    struct struct_name2 {
+        data_type member_name1;
+        data_type member_name2;
+        -----------------------
+        data_type member_nameN;
+    } struct_var2;
+};
+int main(){
+struct struct_name1 struct_var1;
+--------
+return 0;
+}
+
+#include <stdio.h>
+#include <string.h>  // needed for strcpy
+
+struct Student {
+    int roll;
+    float marks;
+
+    struct Address {
+        char city[20];
+        int pin;
+    } addr;
+};
+
+int main() {
+    struct Student s1;
+
+    s1.roll = 101;
+    s1.marks = 88.5;
+
+    strcpy(s1.addr.city, "Bharatpur");
+    s1.addr.pin = 44200;
+
+    printf("Roll: %d\n", s1.roll);
+    printf("Marks: %.2f\n", s1.marks);
+    printf("City: %s\n", s1.addr.city);
+    printf("PIN: %d\n", s1.addr.pin);
+
+    return 0;
+}
+
+Type-2:
+When one structure becomes the data member of another structure, then such structure is called nested structure.
+Type-21:
+struct struct_name1{
+data_type member_name1;
+data_type memeber_name2;
+-----------------------
+data_type member_nameM;
+};
+struct struct_name2{
+data_type member_name1;
+data_type memeber_name2;
+-----------------------
+data_type member_nameN;
+struct struct_name1 struct_var1;
+}struct_var2;
+
+Type-22:
+struct struct_name1{
+data_type member_name1;
+data_type memeber_name2;
+-----------------------
+data_type member_nameM;
+};
+struct struct_name2{
+data_type member_name1;
+data_type memeber_name2;
+-----------------------
+data_type member_nameN;
+struct struct_name1 struct_var1;
+};
+int main(){
+struct struct_name2 struct_var2;
+-------
+return 0;
+}
+
+Example:
+#include <stdio.h>
+#include <string.h>
+
+// Inner structure
+struct Address {
+    char city[20];
+    int pin;
+};
+
+// Outer structure
+struct Student {
+    int roll;
+    float marks;
+    struct Address addr;  // nested structure member
+};
+
+int main() {
+    struct Student s1;  // outer structure variable
+
+    // Assign outer structure members line by line
+    s1.roll = 101;
+    s1.marks = 88.5;
+
+    // Assign inner structure members line by line
+    strcpy(s1.addr.city, "Bharatpur");
+    s1.addr.pin = 44200;
+
+    // Print outer members
+    printf("Roll: %d\n", s1.roll);
+    printf("Marks: %.2f\n", s1.marks);
+
+    // Print inner structure members
+    printf("City: %s\n", s1.addr.city);
+    printf("PIN: %d\n", s1.addr.pin);
+
+    return 0;
+}
+
+Passing Structure as Function Argument:
+Example:
+#include <stdio.h>
+
+// Define structure
+struct Student {
+    int roll;
+    float marks;
+};
+
+// Function prototype
+void display(struct Student s);  // prototype with parameter name 's'
+// void display(struct Student);  // alternative prototype (parameter name omitted)
+
+int main() {
+    struct Student s1 = {101, 88.5};
+
+    // Pass structure to function
+    display(s1);
+
+    return 0;
+}
+
+// Function definition
+void display(struct Student s) {
+    // Access members using dot operator
+    printf("Roll: %d\n", s.roll);
+    printf("Marks: %.2f\n", s.marks);
+
+    // Modifying s here will NOT affect s1 in main
+    s.marks = 100;  
+}
+
+Passing Array of Structure as Function Argument:
+Example:
+#include <stdio.h>
+
+// Define structure
+struct Student {
+    int roll;
+    float marks;
+};
+
+// Function prototype
+void display(struct Student s[]);   // active prototype with parameter name
+// void display(struct Student []);  // alternative prototype (parameter name omitted)
+
+int main() {
+    struct Student arr[2];
+
+    // Input using loop
+    for(int i = 0; i < 2; i++) {
+        printf("Enter Roll and Marks for Student %d: ", i+1);
+        scanf("%d %f", &arr[i].roll, &arr[i].marks);
+    }
+
+    // Call function to display array
+    display(arr);
+
+    return 0;
+}
+
+// Function definition
+void display(struct Student s[]) {
+    for(int i = 0; i < 2; i++) {
+        printf("Student %d Roll: %d, Marks: %.2f\n", i+1, s[i].roll, s[i].marks);
+    }
+}
+
+ 
+Pointer:
+Pointer is a special type of variable that holds the memory address of another existing variable.
+Syntax:
+data_type exisiting_var_name;
+data_type* ptr_name;
+ptr_name=&exisiting_var_name;
+Example:
+int old_var=28;
+int* p=&old_var;
+To access the value of original variable directlu whose memory address held by pointer variable, we used dereference/indirection operator as:
+*ptr_name
+Example:
+*p
+Pointer to Array:
+For 1-D Array:
+#include <stdio.h>
+int main() {
+    int arr[5];
+    int* p = arr;
+    //int* p=&arr[0]; 
+/*p holds the starting address of first element 
+in array called base address*/
+    printf("Enter 5 elements:\n");
+    for(int i = 0; i < 5; i++) {
+        scanf("%d", p + i);   // pointer used for input
+    }
+    printf("Array elements are:\n");
+    for(int i = 0; i < 5; i++) {
+        printf("%d ", *(p + i));   // pointer used for output
+    }
+
+    return 0;
+}
+
+For 2-D Array:
+#include <stdio.h>
+
+#include <stdio.h>
+
+int main() {
+    int arr[2][3];         // 2 rows, 3 columns
+    int (*p)[3] = arr;     // pointer to row
+
+    // Assign pointer to first row of array
+    // Option 1: p = arr;
+    // Option 2: p = &arr[0];
+    p = arr;  // both are equivalent
+
+    printf("Enter 6 elements (row-wise):\n");
+
+    // Input using row pointer
+    for(int i = 0; i < 2; i++) {
+        for(int j = 0; j < 3; j++) {
+            scanf("%d", (*(p + i) + j));  // input element
+        }
+    }
+
+    // Output using row pointer
+    printf("\nMatrix is:\n");
+    for(int i = 0; i < 2; i++) {
+        for(int j = 0; j < 3; j++) {
+            printf("%d ", *(*(p + i) + j));
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+    return 0;
+}
+
+Pointer Arithmetic:
+For 1-D Array:
+Suppose:
+int a[5] = {10,20,30,40,50};
+int *p = a;
+printf("%d", *(p + 2)); // prints 30
+
+Operation:
+&a[i]  => (a + i) or (p + i)
+a[i]   => *(a + i) or *(p + i)
+
+For 2-D Array
+Suppose:
+int a[2][3] = {{1,2,3},{4,5,6}};
+int (*p)[3]=a;
+//p=a;
+//p=&a[0];
+printf("%d", *(*(p + 1) + 2)); // prints 6 (arr[1][2])
+Operation:
+&a[i][j] => (*(a+i)+j) or (*(p+i)+j)
+a[i][j]  => *(*(a+i)+j) or *(*(p+i)+j)
+
+Pointer to Structure/ Structure Pointer:
+Example:
+#include <stdio.h>
+struct Student {
+    int roll;
+    float marks;
+};
+int main() {
+    struct Student s1 = {101, 88.5};
+    struct Student *ptr;   // pointer to structure
+    ptr = &s1;  // point to s1
+    // Access members using pointer
+    printf("Roll: %d\n", ptr->roll);
+    printf("Marks: %.2f\n", ptr->marks);
+    return 0;
+}
+
+Explanation:
+1. struct Student *ptr; → pointer to structure
+2. ptr = &s1; → store address of structure variable
+3. Access members using -> operator: ptr->roll instead of (*ptr).roll
+
+Passing Pointer as Function Argument:
+Example1:
+#include <stdio.h>
+// Function prototype
+void changePointer(int *p);
+int main() {
+    int x = 10;
+    int *ptr = &x;   // pointer to x
+    printf("Before change: x = %d\n", x);
+    // Pass pointer itself to function
+    changePointer(ptr);
+    printf("After change: x = %d\n", x);
+    return 0;
+}
+// Function definition
+void changePointer(int *p) {
+    *p = 20;   // modify value at pointer
+}
+Example2:
+#include <stdio.h>
+// Function prototype
+void increment(int *p);
+int main() {
+    int x = 10;
+    printf("Before increment: %d\n", x);
+    // Pass address of x
+    increment(&x);
+    printf("After increment: %d\n", x);
+    return 0;
+}
+// Function definition
+void increment(int *p) {
+    *p = *p + 1;  // modifies the original variable
+}
+
+Passing Structure Pointer as Function Argument:
+Example:
+#include <stdio.h>
+// Define structure
+struct Student {
+    int roll;
+    float marks;
+};
+// Function prototype
+void display(struct Student *);        // prototype with structure pointer
+// void display(struct Student *p);    // alternative prototype (parameter named)
+int main() {
+    struct Student s1 = {101, 88.5};
+    // Pass address of structure to function
+    display(&s1);
+    return 0;
+}
+// Function definition
+void display(struct Student *p) {
+    // Access structure members using pointer
+    printf("Roll: %d\n", p->roll);
+    printf("Marks: %.2f\n", p->marks);
+}
+
+
+ Pointer to Pointer/ Double Pointer:
+Example:
+include <stdio.h>
+int main() {
+    // 1. A normal integer variable
+    int var = 10;
+
+    // 2. Single pointer (ptr1) pointing to 'var'
+    //    Stores the address of 'var'
+    int *ptr1 = &var;
+
+    // 3. Double pointer (ptr2) pointing to 'ptr1'
+    //    Stores the address of 'ptr1'
+    int **ptr2 = &ptr1;
+
+    // 4. Access and print values
+
+    // Direct access to variable
+    printf("Value of var: %d\n", var);
+
+    // Access value using single pointer
+    // *ptr1 dereferences ptr1 to get the value of var
+    printf("Value using *ptr1: %d\n", *ptr1);
+
+    // Access value using double pointer
+    // **ptr2 first dereferences ptr2 to get ptr1, then dereferences ptr1 to get var
+    printf("Value using **ptr2: %d\n", **ptr2);
+
+    // 5. Print addresses to understand pointers
+    printf("\nAddress of var: %p\n", &var);
+    printf("Address stored in ptr1 (address of var): %p\n", ptr1);
+    printf("Address of ptr1: %p\n", &ptr1);
+    printf("Address stored in ptr2 (address of ptr1): %p\n", ptr2);
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+

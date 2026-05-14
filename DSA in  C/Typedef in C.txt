@@ -1,0 +1,70 @@
+Typedef in C:
+Typedef is a keyword in C to give the alternative name of already existing data type. 
+Syntax: typedef exisiting_data_type new_data_type;
+Suppose we define userdefined structure so we change its name using new name by appending typedef.
+Example:
+/if we do: integer a=20; //error
+typedef int integer;
+integer a=20;
+
+struct Employee{
+int age;
+char name[20];
+};
+int main(){
+typdef struct Employee records;
+records rs;
+rs.age=10;
+rs.name=20;
+printf("age=%d",rs.age);
+return 0;
+}
+
+typedef struct Employee{
+int age;
+char name[20];
+}std;
+int main(){
+std srs;
+rs.age=10;
+rs.name=20;
+printf("age=%d",rs.age);
+return 0;
+}
+
+int*a,b;
+int c=89
+a=&c;
+b=&c;  //error
+
+typedef int* pp1;
+pp1 a,b;
+int c;
+a=&c;
+b=&c;
+
+A typedef is a keyword that is used to assign alternative names to existing datatypes. We use typedef with user defined datatypes, when names of the datatypes become slightly complicated to use in programs. Typedefs can be used to:
+
+Provide the clarity in the code
+it makes easier to change the underlying data types that you use
+Typedefs makes the code more clear and easier to modify.
+
+Typedef can be used with an array mostly with multi-dimensional array. It will increases the readability.
+As we know, the typedef can be implemented for defining a user-defined data type with a specific name and type. We can also use a typedef with structures of C language.
+typedef struct
+{
+    structure element1;
+    structure element2;
+    structure element3;
+} name_of_type;
+Here name_of_type can be implemented by declaring a variable of this structure type.
+
+name_of_type type1, type2;
+
+
+
+Advantages of typedef
+Typedef increases the readability of the code. If we are using structure and function pointer in our code, it will increase the readability of code.
+With the help of typedef, we can use the same name for the different types in different scopes.
+In the case of structure, if we use the typedef then we do not require to write struct keyword at the time of variable declaration.
+Typedef increases the portability of the code.

@@ -1,0 +1,55 @@
+AVL Tree
+An  AVL tree is a self-balancing binary search tree in which each node is associated with a balanced factor must in the range -1,0 or +1 so that its property can be maintained. It refers to height balanced BST. It was introduced by GM Adelson – Velsky and EM Landis 1962. Thus, it is named as Adelson-Velsky and Landis.
+Balance Factor (B.F.):  The balance factor of a node in an AVL tree is defined as the difference in height between its left and right subtrees. Mathematically, its calculated as: 
+B.F. = Height of Left Subtree-Height of Right Subtree = HL-HR
+This helps to maintain the self-balancing to balancing the property of the AVL tree. 
+For an AVL tree to be balanced, the balance factor/ height difference of every node must be -1, 0 or +1. If the balance factor of any node falls outside this range, it indicates that the tree is unbalanced at that  node and a rotation (or series of rotations) is required to bring its back into balance so that this property can be maintained.
+Rotations in AVL Tree:
+After performing operations like insertion and deletion, we need ensure the binary search tree whether is balanced. Thus, by checking balance factor of every node in the tree. If every node satisfies the B.F. condition of a AVL tree, we conclude such operation. If any of node does not satisfy B.F. condition, we proceed to make it by balancing using rotation operation to make the imbalanced tree occur due to insertion and deletion operations into balance tree so that the tree can be restructured to restore balance property.
+Thus, Rotation is the process of moving nodes either to the left or to the right to make the tree balanced. 
+ There are 4 rotations  based on the four possible cases classified into two types rotations:
+
+
+Node: B.F. of every node of BST must be calculated before and after of insertion and deletion operations. 
+Operations in AVL Tree
+The following operations are performed on AVL Tree as:
+o	Searching
+o	Insertion
+o	Deletion
+Insertion Operations in AVL Tree
+Insertion in an AVL tree is similar to insertion in a regular BST with the additional step of balancing the tree.
+1.	Insert element one by one from left to right into the tree to make its node using BST insertion logic. In short, construct BST.
+2.	After insertion, check the balance factor of every node whether the property is maintained. The B.F. of each node must be -1, 0, or 1.
+3.	If any node has different/ other than -1, 0 or +1 called critical node due to which entire tree is imbalanced and hence the AVL property is violated, then we have to restore destroyed balance condition and make the tree re-balanced by performing rotations. 
+4.	Repeat above process until get final balanced BST call AVL tree. 
+Key Concept:
+1.	If B.F.= -1, 0, or +1, the node is balanced and not critical node. But If B.F. ever hits +2 or -2, that is trigger to rotate
+If multiple nodes become unbalanced (B.F.= ±2) after insertion, we try to choose which one should fix either topmost or lowermost or random. 
+Why lowest one?
+Because:
+•	the imbalance starts from bottom.
+•	fixing the lowest nodes automatically fixes upper nodes.
+•	if we rotate at top first, tree may still remain unbalanced. 
+ Deletion operations in AVL tree
+     Deletion in an AVL tree is more complex due to the need to maintain the tree's balance.
+Steps for Deletion:
+•	Delete Like a BST: Remove the node as in a standard BST. There are three cases:
+o	Node with No Child: Simply remove the node.
+o	Node with One Child: Remove the node and replace it with its child.
+o	Node with Two Children: Find the in-order successor (smallest node in the right subtree) or in-order predecessor (largest in the left subtree), copy its value to the node, and delete the successor/predecessor.
+•	Check for Balance: After deletion, walk back up the tree checking the balance factor of each node.
+•	Rotate if Necessary: If any node is unbalanced (balance factor of -2 or 2), perform rotations as in the insertion case to balance the tree.
+Searching operations in AVL tree
+Searching in an AVL tree is identical to searching in a regular BST, as the AVL tree maintains the BST property.
+Steps for Searching:
+•	Start at the Root: Begin at the root node.
+•	Compare and Traverse:
+o	Compare the search value with the current node's value.
+o	If it matches, the node is found.
+o	If the search value is smaller, move to the left child; if larger, move to the right child.
+•	Repeat or End: Continue this process until the item is found or a leaf is reached.
+
+Balanced Algorithm
+     A balanced algorithm is most commonly referred to as balance tree algorithm, is a method by keeping the height difference between light and left subtrees at most 1.  This maintains high performance search, insert and delete operations by preventing the tree from being skewed (linear).  The purpose of this algorithm is to prevent performance degradation in binary search tree, keeping operations logarithmic rather than linear. This concept used in AVL tree, B-tree, B+-tree, and red-black tree
+Analysis of algorithm. 
+

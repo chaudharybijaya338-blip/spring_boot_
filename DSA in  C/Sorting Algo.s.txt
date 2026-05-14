@@ -1,0 +1,7 @@
+The Quick Sort Algorithm is an efficient comparison_based algorithm that uses a divide-and-conquer technique to sort an array or list of elements. It works by selecting a pivot elements and partitioning the other elements into two sub-arrays according to the whether they are less than or greater than the pivot and then recursively sorting the sub-arrays.
+ The working of Quick Sort can be break down into four main steps:
+1. Choose a pivot: Select an element as pivot from the  unsorted list or an array. Pivot element can be first, last, the median or a random element. 
+2. Partition the array: Rearrange/ Partition the elements in the array so that all the elements smaller than or equal to pivot go to the left and all the elements larger than the pivot go to the right. After this partitioning, the pivot is in its final, correct sorted postion. This step is the cornerstone of quick sort algo.
+3. Recursively Sort the sub-arrays: Same logic is applied to the two sub-arrays or sublists( left and right partition) until each sub-arrays contains only one element at which point they are inherently sorted.
+
+4. Combining the sub-array: Once the sorting is done, we can combine both the sub-arrays into a single sorted array
